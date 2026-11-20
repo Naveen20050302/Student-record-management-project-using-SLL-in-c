@@ -201,7 +201,7 @@ void sort_by_name( SLL *ptr)
     p1=ptr;
     for(i=0;i<c-1;i++)
     {
-        p2=ptr->next;
+        p2=p1->next;
         for(j=0;j<c-i-1;j++)
         {
             if(strcmp(p1->name,p2->name)>0)
@@ -228,7 +228,7 @@ void sort_by_marks( SLL *ptr)
     p1=ptr;
     for(i=0;i<c-1;i++)
     {
-        p2=ptr->next;
+        p2=p1->next;
         for(j=0;j<c-i-1;j++)
         {
             if(p1->percentage<p2->percentage)
