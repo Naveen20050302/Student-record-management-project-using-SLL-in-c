@@ -70,9 +70,13 @@ void mod_by_name(SLL *ptr)
             if(strcmp(ptr->name,name)==0)
             {
                 printf("%d %s %f\n",ptr->rollno,ptr->name,ptr->percentage);
-                while(isrollno(rollno,t))
-                rollno++;
-                ptr->rollno=rollno;
+                printf("Enter name\n");
+                scanf(" %[^\n]",ptr->name);
+                while(isname(ptr->name))
+                {
+                    printf("Name is invalid, Enter another name\n");
+                     scanf(" %[^\n]",ptr->name);
+                }
                 printf("Enter the percentage to modify\n");
                 scanf("%f",&ptr->percentage);
                 while(ptr->percentage < 0 || ptr->percentage > 100)
@@ -89,26 +93,7 @@ void mod_by_name(SLL *ptr)
         rollno=1;
         printname(name,ptr);
         int roll;
-        printf("Enter the rollno to modify\n");
-        scanf("%d",&roll);
-        while(ptr)
-        {
-            if(ptr->rollno==roll)
-            {
-                printf("%d %s %f\n",ptr->rollno,ptr->name,ptr->percentage);
-                while(isrollno(rollno,t))
-                rollno++;
-                ptr->rollno=rollno;
-                printf("Enter the percentage\n");
-                scanf("%f",&ptr->percentage);
-                while(ptr->percentage < 0 || ptr->percentage > 100)
-                {
-                    printf("Enter percentage between 0 and 100:\n");
-                    scanf("%f", &ptr->percentage);
-                }
-            }
-            ptr=ptr->next;
-        }
+        mod_by_rollno(ptr);
     }
 }
 void mod_by_marks(SLL *ptr)
@@ -128,17 +113,20 @@ void mod_by_marks(SLL *ptr)
             if(ptr->percentage==percentage)
             {
                 printf("%d %s %f\n",ptr->rollno,ptr->name,ptr->percentage);
-                while(isrollno(rollno,t))
-                rollno++;
-                ptr->rollno=rollno;
-                printf("Enter the name to modify\n");
-                scanf(" %[^\n]",name);
-                while(isname(name))
+                printf("Enter name\n");
+                scanf(" %[^\n]",ptr->name);
+                while(isname(ptr->name))
                 {
                     printf("Name is invalid, Enter another name\n");
-                scanf(" %[^\n]",name);
+                     scanf(" %[^\n]",ptr->name);
                 }
-                strcpy(ptr->name,name);
+                printf("Enter the percentage to modify\n");
+                scanf("%f",&ptr->percentage);
+                while(ptr->percentage < 0 || ptr->percentage > 100)
+                {
+                    printf("Enter percentage between 0 and 100:\n");
+                    scanf("%f", &ptr->percentage);
+                }
             }
             ptr=ptr->next;
         }
@@ -148,27 +136,7 @@ void mod_by_marks(SLL *ptr)
         rollno=1;
         printmarks(percentage,ptr);
         int roll;
-        printf("Enter rollno to modify\n");
-        scanf("%d",&roll);
-        while(ptr)
-        {
-            if(ptr->rollno==roll)
-            {
-                printf("%d %s %f\n",ptr->rollno,ptr->name,ptr->percentage);
-                while(isrollno(rollno,t))
-                rollno++;
-                ptr->rollno=rollno;
-                printf("Enter the name to modify\n");
-                scanf(" %[^\n]",name);
-                while(isname(name))
-                {
-                    printf("Name is invalid, Enter another name\n");
-                    scanf(" %[^\n]",name);
-                }
-                strcpy(ptr->name,name);
-            }
-            ptr=ptr->next;
-        }
+        mod_by_rollno(ptr);
     }
 }
 void sort(SLL *ptr)
